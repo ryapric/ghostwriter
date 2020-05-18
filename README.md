@@ -7,6 +7,9 @@ ghostwriter
 Generate code, config, IaC, and more from template files -- all using a single
 master config file
 
+Very similar to [HasiCorp Consul Template](https://github.com/hashicorp/consul-template),
+but does not rely on another service to manage the config values for you.
+
 Installation
 ------------
 
