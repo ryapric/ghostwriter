@@ -37,7 +37,6 @@ test: clean venv dev-pkgs install_venv
 	@$(VENV-ACT) && $(TEST)
 	@$(VENV-ACT) && $(COVCHECK)
 	@make -s clean
-	@rm -rf venv
 
 test-travis:
 	$(DEV-PKGS)
