@@ -1,53 +1,48 @@
-#!/usr/bin/env python3
-
-"""
-This script is the workhorse that safely fills all of the dynamic values across
-all files in this repo.
-"""
-
+from ghostwriter.cli.argparser import parse_args
 from jinja2 import Template
+import os
 import sys
 import yaml
 
-# Load user cfg
-with open('./ghostwriter.yaml') as f:
-    cfg = yaml.safe_load(f.read())
 
-# Define any helper functions you might want to pass to templates to use
-def raw_file(filename):
-    with open(filename) as f:
-        x = f.read()
-    return x
-cfg['cat_file'] = cat_file
+def render(**kwargs):
+    args = parse_args(sys.argv[1:])
 
-# File to render is passed as arg 1 on CLI
-argfile = sys.argv[1]
-print(f'Rendering {argfile}')
+    # Load user cfg
+    with open(args['config_file']) as f:
+        cfg = yaml.safe_load(f.read())
 
-# Please stick to the format, folks, I'm only one guy over here
-if '.gw' not in argfile:
-    raise Exception('You may only pass in files containing `.gw` for rendering. Aborting.')
+    # Get list of files
 
-# Read the file to render
-with open(argfile) as f:
-    template = f.read()
+    # File to render is passed as arg 1 on CLI
+    argfile = args['']
+    print(f'Rendering {argfile}')
 
-# Stick a do-not-edit header on top
-# lol jk, append to .gitignore instead
-header = """\
-#######################################################
-# !!! DO NOT EDIT BY HAND. Created by ghostwriter !!! #
-#######################################################
+    # Please stick to the format, folks, I'm only one guy over here
+    if '.gw' not in argfile:
+        raise Exception('You may only pass in files containing `.gw` for rendering. Aborting.')
 
-"""
-if '.json' not in argfile:
-    template = header + template
+    # Read the file to render
+    with open(argfile) as f:
+        template = f.read()
 
-# Render Jinja template using global cfg dict
-jinja_template = Template(template)
-rendered_template = jinja_template.render(cfg = cfg)
+    # Stick a do-not-edit header on top
+    # lol jk, append to .gitignore instead
+    header = """\
+    #######################################################
+    # !!! DO NOT EDIT BY HAND. Created by ghostwriter !!! #
+    #######################################################
 
-# Write back out!
-outfile = argfile.replace('.gw', '')
-with open(outfile, 'w') as f:
-    f.write(rendered_template)
+    """
+    if '.json' not in argfile:
+        template = header + template
+
+    # Render Jinja template using global cfg dict
+    jinja_template = Template(template)
+    rendered_template = jinja_template.render(cfg = cfg)
+
+    # Write back out!
+    outfile = argfile.replace('.gw', '')
+    with open(outfile, 'w') as f:
+        f.write(rendered_template)
+# end render
