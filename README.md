@@ -7,8 +7,9 @@ ghostwriter
 Generate code, config, IaC, and more from template files -- all using a single
 master config file
 
-Very similar to [HasiCorp Consul Template](https://github.com/hashicorp/consul-template),
-but does not rely on another service to manage the config values for you.
+Very similar to [HasiCorp Consul
+Template](https://github.com/hashicorp/consul-template), but does not rely on
+another service to manage the config values for you.
 
 Installation
 ------------
@@ -29,7 +30,7 @@ render all templates, recursively, in the current directory
 Template files default to being named the same as their output file, with the
 `.gw` extension *before* their actual extension, e.g. `myfile.gw.txt`. You may
 change the pattern that `ghostwriter` searches for using the `-t` switch (for
-"template extension"). Currently, only the notion of a pre-file extension is
+"template pattern"). Currently, only the notion of a pre-file extension is
 supported, and not other pattern-matching algorithms.
 
 `ghostwriter` defaults to writing out its templated files to the same directory
