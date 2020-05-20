@@ -1,0 +1,8 @@
+developer: ryan
+db:
+  host: some-host
+  port: 5432
+  user: postgres
+  password: password
+app:
+  ip: 0.0.0.0

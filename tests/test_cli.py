@@ -6,9 +6,11 @@ def test_parse_args():
     args = '.'.split()
     args_dict = ap.parse_args(args)['args_dict']
     assert args_dict['PATH'] == '.'
-    assert args_dict['recursive']
     assert args_dict['config_file'] == 'ghostwriter.yaml'
+    assert args_dict['recursive']
     assert args_dict['template_pattern'] == '.gw'
+    assert args_dict['output_root'] == args_dict['PATH']
+    assert args_dict['gitignore_rendered'] == False
 
     # Different PATH (not a default though)
     args = 'input'.split()
@@ -41,4 +43,10 @@ def test_parse_args():
     args = '-t _jinja .'.split()
     args_dict = ap.parse_args(args)['args_dict']
     assert args_dict['template_pattern'] == '_jinja'
+
+    # Append PATH to working-directory .gitignore
+    args = '-i .'.split()
+    args_dict = ap.parse_args(args)['args_dict']
+    assert args_dict['gitignore_rendered'] == True
+
 # end test_parse_args
