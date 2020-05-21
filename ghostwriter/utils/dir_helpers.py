@@ -1,12 +1,19 @@
 import os
 
 
-def build_tree(path):
+def build_tree(path, pattern = None):
     tree = []
     for root, _, filenames in os.walk(path):
         for f in filenames:
             tree.append(os.path.join(root, f))
-    return tree
+    if pattern is not None:
+        tree = [x for x in tree if pattern in x]
+    
+    # Bad pattern results in empty list, so throw an error
+    if len(tree) > 0:
+        return tree
+    else:
+        raise Exception(f"Searching for pattern '{pattern}' on path '{path}' yielded no file results")
 # end build_tree
 
 

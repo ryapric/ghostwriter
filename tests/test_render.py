@@ -20,7 +20,6 @@ def test_render():
 def test_cleanup():
     tree = build_tree('tests/test_path')
     tree = [x for x in tree if '.gw' not in x and '.gitignore' not in x]
-    print(tree)
     for f in tree:
         try:
             os.remove(f)

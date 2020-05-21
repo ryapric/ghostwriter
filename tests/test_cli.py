@@ -1,5 +1,6 @@
 import ghostwriter.cli.argparser as ap
 import pytest
+import subprocess
 
 def test_parse_args():
     # Defaults
@@ -50,3 +51,9 @@ def test_parse_args():
     assert args_dict['gitignore_rendered'] == True
 
 # end test_parse_args
+
+
+def test_main():
+    # test the actual CLI run (with subprocess.run). You can do this on the main.py file directly.
+    raise Exception
+# end test_main
