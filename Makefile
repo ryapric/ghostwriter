@@ -38,6 +38,15 @@ test: clean venv dev-pkgs install_venv
 	@$(VENV-ACT) && $(COVCHECK)
 	@make -s clean
 
+test-docker:
+	@if [ -z $(pyver) ]; then \
+		printf "Must supply 'pyver' variable\n"; \
+		exit 1; \
+	fi
+	@sed 's/pyver/$(pyver)/g' Dockerfile-test > Dockerfile-versioned
+	@docker build -f Dockerfile-versioned -t ghostwriter:python-$(pyver) .
+	@docker run --rm -it ghostwriter:python-$(pyver)
+
 test-travis:
 	$(DEV-PKGS)
 	$(TEST)
