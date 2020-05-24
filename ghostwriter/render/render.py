@@ -13,7 +13,7 @@ def render(**kwargs):
         if k == 'PATH':
             continue
         k_fixed = f"--{k.replace('_', '-')}"
-        args_i = ' '.join([k_fixed, v])
+        args_i = ' '.join([k_fixed, str(v)])
         cli_args.append(args_i)
     # end for
     cli_args = f"{cli_args[0]} {kwargs['PATH']}".split()
