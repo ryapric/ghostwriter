@@ -3,13 +3,14 @@
 # This script tests the CLI as though it were installed & called locally, to
 # avoid mocking it super hard in Python
 
+
 #########
 # SETUP #
 #########
 
 python3 -m venv --clear venv-gw
 source venv-gw/bin/activate
-pip3 install .
+pip3 install . >/dev/null
 
 cd tests || exit 1
 

@@ -17,6 +17,9 @@ def test_build_tree():
     # Bad pattern should return empty list, which is an error
     with pytest.raises(Exception):
         build_tree('tests/test_dir_helpers', pattern = 'not_real')
+    
+    # Recursive options should be respected
+    raise Exception
 # end test_build_tree
 
 

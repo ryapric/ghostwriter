@@ -31,7 +31,7 @@ venv: FORCE
 
 dev-pkgs: venv
 	@$(VENV-ACT) && \
-	$(DEV-PKGS)
+	$(DEV-PKGS) >/dev/null
 
 test: clean venv dev-pkgs install_venv
 	@$(VENV-ACT) && $(TEST)
@@ -58,7 +58,11 @@ build: venv dev-pkgs
 
 install_venv: venv
 	@$(VENV-ACT); \
-	if [ -e ./requirements.txt ]; then pip3 install -r requirements.txt; else pip3 install . ; fi
+	if [ -e ./requirements.txt ]; then \
+		pip3 install -r requirements.txt >/dev/null; \
+	else \
+		pip3 install . >/dev/null; \
+	fi
 
 clean: FORCE
 	@find . -type d -regextype posix-extended -regex ".*\.egg-info|.*py(test_)?cache.*" -exec rm -rf {} +
