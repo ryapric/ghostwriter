@@ -1,5 +1,8 @@
+# Filled, versioned, test Dockerfile
+Dockerfile-versioned
+
 # Heavy Python garbage
-venv/
+*venv*
 *cache*
 *.pyc
 build/
