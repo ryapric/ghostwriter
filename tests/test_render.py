@@ -11,10 +11,11 @@ def test_render():
         'PATH': 'tests/test_path'
     }
     render(**args_dict)
-    want = dedent("""\
-    postgresql://postgres:password@some-host:5432""")
+    want = "postgresql://postgres:password@some-host:5432"
     got = read_file('tests/test_path/db.txt')
     assert want == got
+
+
 # end test_render
 
 def test_cleanup():

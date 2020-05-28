@@ -1,13 +1,19 @@
 import os
 
 
-def build_tree(path, pattern = None):
-    tree = []
-    for root, _, filenames in os.walk(path):
-        for f in filenames:
-            tree.append(os.path.join(root, f))
-    if pattern is not None:
-        tree = [x for x in tree if pattern in x]
+def build_tree(path, pattern = None, recursive = True):
+    if os.path.isfile(path):
+        return [path]
+
+    if recursive:
+        tree = []
+        for root, _, filenames in os.walk(path):
+            for f in filenames:
+                tree.append(os.path.join(root, f))
+        if pattern is not None:
+            tree = [x for x in tree if pattern in x]
+    else:
+        tree = [f for f in os.listdir(path) if os.path.isfile(f)]
     
     # Bad pattern results in empty list, so throw an error
     if len(tree) > 0:

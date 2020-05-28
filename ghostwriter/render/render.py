@@ -25,7 +25,11 @@ def render(**kwargs):
         cfg = yaml.safe_load(f.read())
 
     # Get list of files
-    tree = build_tree(args['PATH'])
+    tree = build_tree(
+        args['PATH'],
+        pattern = args['template_pattern'],
+        recursive = args['recursive']
+    )
 
     for pathfile in tree:
         print(f'Rendering {pathfile}...')
@@ -39,7 +43,7 @@ def render(**kwargs):
         rendered_template = jinja_template.render(cfg = cfg)
 
         # Write back out!
-        outfile = pathfile.replace('.gw', '')
+        outfile = pathfile.replace(args['template_pattern'], '')
 
         with open(outfile, 'w') as f:
             f.write(rendered_template)

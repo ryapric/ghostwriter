@@ -4,9 +4,10 @@ import pytest
 
 
 def test_build_tree():
-    # Default option finds all files
+    # Default option finds all files, recursively
     got = build_tree('tests/test_dir_helpers')
-    want = [os.path.join('tests', 'test_dir_helpers', x) for x in ['file.txt', 'file.gw.txt']]
+    want_files = ['file.txt', 'file.gw.txt', 'subpath/subpath_file.txt']
+    want = [os.path.join('tests', 'test_dir_helpers', x) for x in want_files]
     assert got == want
 
     # `pattern` filters result set to files containing the pattern
@@ -19,7 +20,12 @@ def test_build_tree():
         build_tree('tests/test_dir_helpers', pattern = 'not_real')
     
     # Recursive options should be respected
-    raise Exception
+    got = build_tree('tests/test_dir_helpers')
+    want = [os.path.join('tests', 'test_dir_helpers', x) for x in ['file.txt', 'file.gw.txt']]
+
+    # Single file should return single result (os.walk() does not by default)
+    got = build_tree('tests/test_dir_helpers/file.txt')
+    want = ['tests/test_dir_helpers/file.txt']
 # end test_build_tree
 
 
