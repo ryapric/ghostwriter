@@ -1,11 +1,13 @@
 # Filled, versioned, test Dockerfile
 Dockerfile-versioned
 
-# Heavy Python garbage
+# Heavy or build-artifact Python garbage
 *venv*
 *cache*
 *.pyc
 build/
+lib/
+include/
 dist/
 *egg-info*
 
