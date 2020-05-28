@@ -41,7 +41,7 @@ def parse_args(args):
                         default = None)
 
     # Template pattern
-    t_help = dedent('''\
+    p_help = dedent('''\
         Filename pattern for template files. The default is '.gw'. The pattern
         must appear before any potential filename extension. For example, if a
         file is typically named 'file.json', then the file ghostwriter will
@@ -49,8 +49,8 @@ def parse_args(args):
         '_jinja' would force ghostwriter to instead render a file named
         'file_jinja.json'. Files that typically do not have an extension instead
         must end in this pattern, e.g. 'Dockerfile.gw'.''')
-    parser.add_argument('-t', '--template-pattern',
-                        help = t_help,
+    parser.add_argument('-p', '--template-pattern',
+                        help = p_help,
                         default = '.gw')
     
     # Add files to gitignore
