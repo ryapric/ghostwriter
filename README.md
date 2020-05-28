@@ -4,10 +4,10 @@ them to GH Issues or something.
 ghostwriter
 ===========
 
-[![PyPI Latest Release](https://img.shields.io/pypi/v/ghostwriter.svg)](https://pypi.org/project/ghostwriter/)
-[![Package Status](https://img.shields.io/pypi/status/ghostwriter.svg)](https://pypi.org/project/ghostwriter/)
-[![License](https://img.shields.io/pypi/l/ghostwriter.svg)](https://github.com/ryapric/ghostwriter/blob/master/LICENSE)
-[![Travis Build Status](https://travis-ci.org/pandas-dev/pandas.svg?branch=master)](https://travis-ci.org/ryapric/ghostwriter)
+[![PyPI Latest Release](https://img.shields.io/pypi/v/ghostwriter-cfg.svg)](https://pypi.org/project/ghostwriter-cfg/)
+[![Package Status](https://img.shields.io/pypi/status/ghostwriter-cfg.svg)](https://pypi.org/project/ghostwriter-cfg/)
+[![License](https://img.shields.io/pypi/l/ghostwriter-cfg.svg)](https://github.com/ryapric/ghostwriter/blob/master/LICENSE)
+[![Travis Build Status](https://travis-ci.org/ryapric/ghostwriter.svg?branch=master)](https://travis-ci.org/ryapric/ghostwriter)
 
 Generate code, config, IaC, and more from template files -- all using a single
 master config file
