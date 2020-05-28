@@ -4,6 +4,11 @@ them to GH Issues or something.
 ghostwriter
 ===========
 
+[![PyPI Latest Release](https://img.shields.io/pypi/v/ghostwriter.svg)](https://pypi.org/project/ghostwriter/)
+[![Package Status](https://img.shields.io/pypi/status/ghostwriter.svg)](https://pypi.org/project/ghostwriter/)
+[![License](https://img.shields.io/pypi/l/ghostwriter.svg)](https://github.com/ryapric/ghostwriter/blob/master/LICENSE)
+[![Travis Build Status](https://travis-ci.org/pandas-dev/pandas.svg?branch=master)](https://travis-ci.org/ryapric/ghostwriter)
+
 Generate code, config, IaC, and more from template files -- all using a single
 master config file
 
@@ -17,19 +22,22 @@ Installation
 `ghostwriter` is distributed as a Python package, so can be installed with
 `pip`:
 
-    pip3 install -U ghostwriter
+    pip3 install -U ghostwriter-cfg
+
+Note the `-cfg` suffix; someone else took the `ghostwriter` name a month before
+I started working on this ¯\\\_(ツ)\_/¯
 
 Usage
 -----
 
 Assuming your master config is called `ghostwriter.yaml`, the following will
-render all templates, recursively, in the current directory
+render all templates, recursively, in the current directory:
 
     ghostwrite -c ghostwriter.yaml -r .
 
 Template files default to being named the same as their output file, with the
 `.gw` extension *before* their actual extension, e.g. `myfile.gw.txt`. You may
-change the pattern that `ghostwriter` searches for using the `-t` switch (for
+change the pattern that `ghostwriter` searches for using the `-p` switch (for
 "template pattern"). Currently, only the notion of a pre-file extension is
 supported, and not other pattern-matching algorithms.
 

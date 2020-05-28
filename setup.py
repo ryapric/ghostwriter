@@ -4,7 +4,7 @@ with open('README.md', 'r') as f:
     long_description = f.read()
 
 setuptools.setup(
-    name = 'ghostwriter',
+    name = 'ghostwriter-cfg',
     version = '0.1.0',
     author = ['Ryan J. Price'],
     author_email = ['ryapric@gmail.com'],

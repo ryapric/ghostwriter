@@ -1,5 +1,8 @@
 # Name of package
-PKGNAME := $$(grep 'name = ' setup.py | sed -r 's/name = '"'"'(.*)'"'"',/\1/')
+# Dynamic
+# PKGNAME := $$(grep 'name = ' setup.py | sed -r 's/name = '"'"'(.*)'"'"',/\1/')
+# Static, in case your package is named differently in setup.py
+PKGNAME := ghostwriter
 
 # Need to adjust shell used, for `source` command
 SHELL = /usr/bin/env bash
