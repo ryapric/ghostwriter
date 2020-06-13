@@ -14,8 +14,9 @@ VENV-ACT = source venv/bin/activate
 # w/o a lot of copy-paste
 # Note that I'm having a hard time getting `define` blocks to work, here, as
 # well as .ONESHELL:
-DEV-PKGS = pip3 install wheel && pip3 install setuptools coverage pytest pytest-cov pytest-flask
+DEV-PKGS = pip3 install wheel && pip3 install setuptools coverage pytest pytest-cov mypy
 TEST = python3 -m pytest --cov $(PKGNAME) . -v
+TYPECHECK = python3 -m mypy -p $(PKGNAME)
 COVCHECK = if [ $$(python3 -m coverage report | tail -1 | awk '{ print $$NF }' | tr -d '%') -lt $(COVREQ) ]; then echo -e "\nFAILED: Insufficient test coverage (<$(COVREQ)%)\n" 2>&1 && exit 1; fi
 
 # Required test coverage; can set default as integer percent (e.g. 95 == 95%)
@@ -37,8 +38,12 @@ dev-pkgs: venv
 	$(DEV-PKGS) >/dev/null
 
 test: clean venv dev-pkgs install_venv
+	@printf "---> Running tests...\n"
 	@$(VENV-ACT) && $(TEST)
+	@printf "---> Running coverage check...\n"
 	@$(VENV-ACT) && $(COVCHECK)
+	@printf "---> Running typecheck...\n"
+	@$(VENV-ACT) && $(TYPECHECK)
 	@make -s clean
 
 test-docker:
