@@ -3,7 +3,5 @@ python:
   - "3.6"
   - "3.7"
   - "3.8"
-install:
-  - python3 setup.py install
 script:
-  - pip3 install pytest; pytest
+  - bash tests/run-tests.sh

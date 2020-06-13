@@ -17,6 +17,14 @@ setuptools.setup(
         'jinja2 >= 2.11.2',
         'pyyaml >= 5.3.1'
     ],
+    extras_require = {
+        'dev': [
+            'coverage',
+            'pytest',
+            'pytest-cov',
+            'mypy'
+        ]
+    },
     classifiers = [
         'Programming Language :: Python :: 3',
         'Operating System :: OS Independent',
