@@ -5,7 +5,7 @@ import os
 import yaml
 
 
-def render(**kwargs):
+def render(**kwargs: str) -> None:
     # We need to dummy up the args dictionary as though the entries were the
     # command-line args
     cli_args = []

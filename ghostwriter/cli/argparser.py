@@ -1,9 +1,10 @@
 import argparse
 import sys
 from textwrap import dedent
+from typing import List, Dict
 
 
-def parse_args(args):
+def parse_args(args: List[str]) -> Dict:
     parser = argparse.ArgumentParser()
 
     # Config file

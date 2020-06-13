@@ -1,7 +1,8 @@
 import os
+from typing import List
 
 
-def build_tree(path, pattern = None, recursive = True):
+def build_tree(path: str, pattern: str = None, recursive: bool = True) -> List[str]:
     if os.path.isfile(path):
         return [path]
 
@@ -23,7 +24,7 @@ def build_tree(path, pattern = None, recursive = True):
 # end build_tree
 
 
-def gitignore_rendered(output_root):
+def gitignore_rendered(output_root: str) -> None:
     gitignore_path = os.path.abspath('.gitignore')
 
     # Return early if no gitignore exists
@@ -45,7 +46,7 @@ def gitignore_rendered(output_root):
 # end gitignore_rendered
 
 
-def read_file(path):
+def read_file(path: str) -> str:
     with open(path) as f:
         content = f.read()
     return content
