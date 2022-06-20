@@ -1,5 +1,5 @@
-This README isn't fully true yet; just a placeholder for features until I add
-them to GH Issues or something.
+This repository is ARCHIVED, as it was rewritten in another language and moved over
+[here](https://github.com/opensourcecorp/ghostwriter).
 
 ghostwriter
 ===========
